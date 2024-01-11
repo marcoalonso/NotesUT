@@ -24,6 +24,18 @@ final class NoteTests: XCTestCase {
         XCTAssertEqual(note.text, text)
         XCTAssertEqual(note.createdAt, date)
     }
+    
+    func testValidateEmptyText() {
+        //Given
+        let title = "Test Title"
+        let date = Date()
+        
+        //Then
+        let note = Note(title: title, text: nil, createdAt: date)
+        
+        //When
+        XCTAssertEqual(note.getText, "")
+    }
 
 
 }
