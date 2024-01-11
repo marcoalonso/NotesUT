@@ -78,6 +78,25 @@ final class ViewModelTests: XCTestCase {
         } else {
             XCTFail("No note was created.")
         }
+    }
+    
+    func testRemoveNote() {
+        //Given
+        
+        let title = "Test Tilte"
+        let text = "Text Test"
+        
+        vm.createNoteWith(title: title, text: text)
+        
+        //When
+        if let id = vm.notes.first?.id {
+            vm.removeNoteWith(id: id)
+            
+            //Then
+            XCTAssertTrue(vm.notes.isEmpty)
+        } else {
+            XCTFail("Error deleting note.")
+        }
         
         
     }
